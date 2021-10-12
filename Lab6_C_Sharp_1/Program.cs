@@ -2,13 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using info_motor;
 
-namespace Lab6_C_Sharp_1
+namespace ConsoleApp1
 {
     class Program
     {
+
+
         static void Main(string[] args)
         {
+            Motor motorishe = new Motor();
+            //motorishe.New_Motor_Info();
+            motorishe.prosmotr_motor();
+
+
         }
     }
 }
