@@ -14,23 +14,23 @@ namespace info_korobka
 
 		public void new_korobka_info()
         {
-			Console.WriteLine("Добавление информации о коробке передач автомобиля\n\nВведите тип коробки передач (АКПП/МКПП): ");
+			Console.Write("Добавление информации о коробке передач автомобиля\n\nВведите тип коробки передач (АКПП/МКПП): ");
 			do
 			{
 				tip_korobki = Console.ReadLine();
 				if (tip_korobki == "")
 				{
-					Console.WriteLine("Неверно введена модель автомобиля, попробуйте еще: ");
+					Console.Write("Неверно введена модель автомобиля, попробуйте еще: ");
 				}
 			} while (tip_korobki == "");
 
-			Console.WriteLine("Введите количество передач коробки: ");
+			Console.Write("Введите количество передач коробки: ");
 			do
 			{
 				kolvo_peredach = Convert.ToDouble(Console.ReadLine());
 				if (kolvo_peredach < 0)
 				{
-					Console.WriteLine("Неверно введено значение количества передач, попробуйте еще: ");
+					Console.Write("Неверно введено значение количества передач, попробуйте еще: ");
 				}
 			} while (kolvo_peredach < 0);
 		}
@@ -45,12 +45,11 @@ namespace info_korobka
         {
 			if (kolvo_peredach >= 0)
 			{
-				Console.WriteLine("\n\nИНФОРМАЦИЯ О КОРОБКЕ ПЕРЕКЛЮЧЕНИЯ ПЕРЕДАЧ\nТип коробки переключения передач: " + tip_korobki);
-				Console.WriteLine("\nКоличество передач коробки: " + kolvo_peredach);
+				Console.Write("\nИНФОРМАЦИЯ О КОРОБКЕ ПЕРЕКЛЮЧЕНИЯ ПЕРЕДАЧ\n\nТип коробки переключения передач: " + tip_korobki + "\nКоличество передач коробки: " + kolvo_peredach);
 			}
 			else
 			{
-				Console.WriteLine("Информации о коробках передач отсутствует");
+				Console.WriteLine("Информация о коробке передач отсутствует");
 			}
 		}
 
@@ -58,20 +57,33 @@ namespace info_korobka
         {
 			if (kolvo_peredach >= 0)
 			{
-				Console.WriteLine("Введите количество передач: ");
+				Console.Write("Введите количество передач: ");
 				do
 				{
 					kolvo_peredach = Convert.ToDouble(Console.ReadLine());
 					if (kolvo_peredach < 0)
 					{
-						Console.WriteLine("Неверно введено значение количества передач, попробуйте еще: "); 
+						Console.Write("Неверно введено значение количества передач, попробуйте еще: "); 
 					}
 				} while (kolvo_peredach < 0);
+				Console.WriteLine("\nКоличество передач коробки успешно изменено.");
 			}
 			else
 			{
 				Console.WriteLine("Информации о коробках передач отсутствует");
 			}
 		}
+
+		public Int32 korobka_get()
+        {
+			if (this.kolvo_peredach >= 0)
+            {
+				return 1;
+            }
+            else
+			{
+				return 0;
+			}
+        }
     }
 }

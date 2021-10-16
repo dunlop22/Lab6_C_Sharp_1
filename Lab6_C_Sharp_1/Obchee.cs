@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace obchee_info
+namespace info_obchee
 {
     class Obchee
     {
         public string name = "";
         public string tip_privoda = "";
         public string tip_topliva = "";
-        public double massa;
-        public double obem_benzobaka;
-        public double kolvo_mest;
-        public double razgon_do_100;
+        public double massa = -1;
+        public double obem_benzobaka = -1;
+        public double kolvo_mest = -1;
+        public double razgon_do_100 = -1;
 
         public void new_obchee_info()
         {
-			Console.WriteLine("Добавление общей информации об автомобиле\n\nВведите модель автомобиля: ");
+			Console.Write("Добавление общей информации об автомобиле\n\nВведите модель автомобиля: ");
 
 			do
 			{
@@ -29,7 +29,7 @@ namespace obchee_info
 				}
 			} while (name == "");
 
-			Console.WriteLine("Введите тип привода (2WD/4WD): ");
+			Console.Write("Введите тип привода (2WD/4WD): ");
 			do
 			{
 
@@ -40,7 +40,7 @@ namespace obchee_info
 				}
 			} while (tip_privoda == "");
 
-			Console.WriteLine("Введите тип топлива (бензин/дизель/электро): ");
+			Console.Write("Введите тип топлива (бензин/дизель/электро): ");
 			do
 			{
 				tip_topliva = Console.ReadLine();
@@ -50,7 +50,7 @@ namespace obchee_info
 				}
 			} while (tip_topliva == "");
 
-			Console.WriteLine("Введите количество посадочных мест: ");
+			Console.Write("Введите количество посадочных мест: ");
 
 			do
 			{
@@ -61,7 +61,7 @@ namespace obchee_info
 				}
 			} while (kolvo_mest < 0);
 
-			Console.WriteLine("Введите время разгона до 100км/ч: ");
+			Console.Write("Введите время разгона до 100км/ч: ");
 			do
 			{
 				razgon_do_100 = Convert.ToDouble(Console.ReadLine());
@@ -69,7 +69,7 @@ namespace obchee_info
 				{ Console.WriteLine("Неверно введенно значение разгона до 100км/ч, попробуйте еще: "); }
 			} while (razgon_do_100 < 0);
 
-			Console.WriteLine("Введите массу автомобиля: ");
+			Console.Write("Введите массу автомобиля: ");
 			do
 			{
 				massa = Convert.ToDouble(Console.ReadLine());
@@ -79,7 +79,7 @@ namespace obchee_info
 				}
 			} while (massa < 0);
 
-			Console.WriteLine("Введите объем бензобака в литрах: ");
+			Console.Write("Введите объем бензобака в литрах: ");
 			do
 			{
 				obem_benzobaka = Convert.ToDouble(Console.ReadLine());
@@ -88,6 +88,7 @@ namespace obchee_info
 					Console.WriteLine("Неверно введенно значение объема бензобака, попробуйте еще: ");
 				}
 			} while (obem_benzobaka < 0);
+			
 		}
 
 		public void new_obchee(double massa, double obem_benzobaka, double razgon_do_100, double kolvo_mest, string name, string tip_topliva, string tip_privoda)
@@ -105,17 +106,11 @@ namespace obchee_info
 		{
 			if (obem_benzobaka >= 0)
 			{
-				Console.WriteLine("\n\nОБЩАЯ ИНФОРМАЦИЯ:\nМодель: " + name);
-				Console.WriteLine("\nТип привода: " + tip_privoda);
-				Console.WriteLine("\nТип топлива: " + tip_topliva);
-				Console.WriteLine("\nКоличество посадочных мест: " + kolvo_mest);
-				Console.WriteLine("\nВремя разгона до 100км/ч: " + razgon_do_100);
-				Console.WriteLine("\nОбъем бензобака: " + obem_benzobaka);
-				Console.WriteLine("\nМасса: " + massa);
+				Console.Write("ОБЩАЯ ИНФОРМАЦИЯ:\n\nМодель: " + name + "\nТип привода: " + tip_privoda + "\nТип топлива: " + tip_topliva + "\nКоличество посадочных мест: " + kolvo_mest + "\nВремя разгона до 100км/ч: " + razgon_do_100 + "\nОбъем бензобака: " + obem_benzobaka + "\nМасса: " + massa);
 			}
 			else
 			{
-				Console.WriteLine("Общая информация отсутствует");
+				Console.Write("Общая информация отсутствует.");
 			}
 		}
 
@@ -123,22 +118,34 @@ namespace obchee_info
         {
 			if (obem_benzobaka >= 0)
 			{
-				
-				Console.WriteLine("Введите новое название модели: ");
+				Console.Write("Введите новое название модели: ");
 				do
 				{
 					name = Console.ReadLine();
 					if (name == "")
 					{ 
-						Console.WriteLine("Неверно введена модель автомобиля, попробуйте еще: "); 
+						Console.Write("Неверно введена модель автомобиля, попробуйте еще: "); 
 					}
 				} while (name == "");
+				Console.Write("Модель автомобиля успешно изменена.");
 			}
 			else
 			{
 				Console.WriteLine("Общая информация не найдена.\n\nНажмите любую клавишу для возврата в основное меню.");
-				//_getch();
+				Console.ReadKey(true);
 			}
 		}
+
+		public Int32 obchee_get()
+        {
+			if (this.massa >= 0)
+            {
+				return 1;
+            }
+            else
+            {
+				return 0;
+            }
+        }
     }
 }

@@ -18,78 +18,73 @@ namespace info_motor
 
 		public void New_Motor_Info()
 		{
-			Console.WriteLine("Введите маркировку двигателя: ");
+			Console.Write("Добавление информации о двигателе\n\nВведите маркировку двигателя: ");
 			do
 			{
 				name = Console.ReadLine();
 				if (name.Length == 0)
 				{
-					Console.WriteLine("Неверно введена маркировка двигателя, попробуйте еще: ");
+					Console.Write("Неверно введена маркировка двигателя, попробуйте еще: ");
 				}
 			} while (name.Length == 0);
 
-			Console.WriteLine("Введите рабочий объем двигателя в литрах: ");
+			Console.Write("Введите рабочий объем двигателя в литрах: ");
 			do
 			{
 				rab_obem = Convert.ToDouble(Console.ReadLine());
 				if (rab_obem < 0)
 				{
-					Console.WriteLine("Неверно введено значение объема двигателя, попробуйте еще: ");
+					Console.Write("Неверно введено значение объема двигателя, попробуйте еще: ");
 				}
 			} while (rab_obem < 0);
 
-			Console.WriteLine("Введите количество лошадинных сил: ");
+			Console.Write("Введите количество лошадинных сил: ");
 			do
 			{
 				koni = Convert.ToDouble(Console.ReadLine());
 				if (koni < 0)
 				{
-					Console.WriteLine("Неверно введено значение количества лошадиных сил, попробуйте еще: ");
+					Console.Write("Неверно введено значение количества лошадиных сил, попробуйте еще: ");
 				}
 			} while (koni < 0);
 
-			Console.WriteLine("Введите средний расход топлива на 100км в литрах: ");
+			Console.Write("Введите средний расход топлива на 100км в литрах: ");
 			do
 			{
 				rasxod = Convert.ToDouble(Console.ReadLine());
 				if (rasxod < 0)
 				{
-					Console.WriteLine("Неверно введено значение расхода на 100км, попробуйте еще: ");
+					Console.Write("Неверно введено значение расхода на 100км, попробуйте еще: ");
 				}
 			} while (rasxod < 0);
 
 
-			Console.WriteLine("Введите количество цилиндров: ");
+			Console.Write("Введите количество цилиндров: ");
 			do
 			{
 				kol_vo_cilindr = Convert.ToDouble(Console.ReadLine());
 				if (kol_vo_cilindr < 0)
 				{
-					Console.WriteLine("Неверно введено значение количества цилиндров, попробуйте еще: ");
+					Console.Write("Неверно введено значение количества цилиндров, попробуйте еще: ");
 				}
 			} while (kol_vo_cilindr < 0);
 
-			Console.WriteLine("Введите количество клапанов на один цилиндр: ");
+			Console.Write("Введите количество клапанов на один цилиндр: ");
 			do
 			{
 				klapan = Convert.ToDouble(Console.ReadLine());
 				if (klapan < 0)
 				{
-					Console.WriteLine("Неверно введено значение количества клапанов, попробуйте еще: ");
+					Console.Write("Неверно введено значение количества клапанов, попробуйте еще: ");
 				}
 			} while (klapan < 0);
 		}
 
 		public void prosmotr_motor()
 		{
-			if (koni < 0)
+			if (koni > 0)
 			{
-				Console.WriteLine("\n\nИНФОРАЦИЯ О ДВИГАТЕЛЕ:\nМаркировка двигателя: " + name);
-				Console.WriteLine("\nРабочий объем: " + rab_obem);
-				Console.WriteLine("\nМощность (л.с.): " + koni);
-				Console.WriteLine("\nСредний расход на 100км: " + rasxod);
-				Console.WriteLine("\nКоличество цилиндров: " + kol_vo_cilindr);
-				Console.WriteLine("\nКоличество клапанов на 1 цилиндр: " + klapan);
+				Console.Write("ИНФОРМАЦИЯ О ДВИГАТЕЛЕ:\n\nМаркировка двигателя: " + name + "\nРабочий объем: " + rab_obem + "\nМощность (л.с.): " + koni + "\nСредний расход на 100км: " + rasxod + "\nКоличество цилиндров: " + kol_vo_cilindr + "\nКоличество клапанов на 1 цилиндр: " + klapan);
 			}
 			else
 			{
@@ -111,18 +106,34 @@ namespace info_motor
 		{
 			if (koni >= 0)
 			{
-				double koni1 = -1;
-				Console.WriteLine("Введите новое количество лошадиных сил.");
+				Console.Write("Введите новое количество лошадиных сил: ");
 				do
 				{
 					koni = Convert.ToDouble(Console.ReadLine());
-				} while (koni1 < 0);
-				this.koni = koni1;
+					if (koni < 0)
+					{
+						Console.Write("Неверно введено значение количества лошадиных сил, попробуйте еще: "); 
+					}
+				} while (koni < 0);
+				Console.WriteLine("\nКоличество лошадиных сил успешно изменено.");
             }
 			else
 			{
-				Console.WriteLine("Информация о двигателе отсутствует");
+				Console.Write("Информация о двигателе отсутствует");
 			}
+		}
+
+		public Int32 motor_get()
+		{
+			if (koni > 0)
+            {
+				return 1;
+			}
+            else
+            {
+				return 0;
+            }
+			
 		}
 
 	}

@@ -15,46 +15,46 @@ namespace info_koleso
 
         public void new_koleso_info()
         {
-			Console.WriteLine("Добавление информации о колесах автомобиля\n\nВведите ширину колеса: ");
+			Console.Write("Добавление информации о колесах автомобиля\n\nВведите ширину колеса: ");
 
 			do
 			{
 				shirina = Convert.ToDouble(Console.ReadLine());
 				if (shirina < 0)
 				{
-					Console.WriteLine("Неверно введено значение ширины колеса, попробуйте еще: ");
+					Console.Write("Неверно введено значение ширины колеса, попробуйте еще: ");
 				}
 			} while (shirina < 0);
 			
 			
-			Console.WriteLine("Введите высоту колеса: ");
+			Console.Write("Введите высоту колеса: ");
 			do
 			{
 				visota = Convert.ToDouble(Console.ReadLine());
 				if (visota < 0)
 				{
-					Console.WriteLine("Неверно введено значение высоты колеса, попробуйте еще: ");
+					Console.Write("Неверно введено значение высоты колеса, попробуйте еще: ");
 				}
 			} while (visota < 0);
 
-			Console.WriteLine("Введите диаметр колеса в дюймах: ");
+			Console.Write("Введите диаметр колеса в дюймах: ");
 			do
 			{
 				diametr = Convert.ToDouble(Console.ReadLine());
 				if (diametr < 0)
 				{
-					Console.WriteLine("Неверно введено значение диаметра колеса, попробуйте еще: ");
+					Console.Write("Неверно введено значение диаметра колеса, попробуйте еще: ");
 				}
 			} while (diametr < 0);
 
 
-			Console.WriteLine("Введите тип колесного диска (штамповка/литье/ковка): ");
+			Console.Write("Введите тип колесного диска (штамповка/литье/ковка): ");
 			do
 			{
 				tip_diska = Console.ReadLine();
                 if (tip_diska == "") 
 				{
-					Console.WriteLine("Неверно введен тип колесного диска, попробуйте еще: ");
+					Console.Write("Неверно введен тип колесного диска, попробуйте еще: ");
 				}
             } while (tip_diska == "");
 		}
@@ -71,10 +71,7 @@ namespace info_koleso
         {
 			if (visota >= 0)
 			{
-				Console.WriteLine("\n\nИНФОРМАЦИЯ О КОЛЕСАХ\nШирина колеса: " + shirina);
-				Console.WriteLine("\nДиаметр колеса: " + diametr);
-				Console.WriteLine("\nВысота колеса: " + visota);
-				Console.WriteLine("\nТип диска: " + tip_diska);
+				Console.WriteLine("\nИНФОРМАЦИЯ О КОЛЕСАХ\n\nШирина колеса: " + shirina + "\nДиаметр колеса: " + diametr + "\nВысота колеса: " + visota + "\nТип диска: " + tip_diska);
 			}
 			else
 			{
@@ -86,21 +83,33 @@ namespace info_koleso
 		{
 			if (visota >= 0)
 			{
-				Console.WriteLine("Введите новый диаметр колеса: ");
+				Console.Write("Введите новый диаметр колеса: ");
 				do
 				{
+					diametr = Convert.ToDouble(Console.ReadLine());
 					if (diametr < 0)
 					{
-						Console.WriteLine("Неверно введено значение диаметра, попробуйте еще: ");
+						Console.Write("Неверно введено значение диаметра, попробуйте еще: ");
 					}
 				} while (diametr < 0);
+				Console.WriteLine("Диаметр колеса успешно изменен");
 			}
 			else
 			{
 				Console.WriteLine("Информация о колесе еще не была добавлена");
 			}
-
 		}
+		public Int32 koleso_get()
+        {
+			if (this.diametr >= 0)
+            {
+				return 1;
+            }
+            else
+            {
+				return 0;
+            }
+        }
 
 	}
 }
